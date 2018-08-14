@@ -1,4 +1,4 @@
-package br.com.gestaogastos.cartao.model;
+package br.com.gestaogastos.cartao.usuario.model;
 
 import br.com.gestaogastos.cartao.enums.ETipoUsuario;
 import lombok.Data;
