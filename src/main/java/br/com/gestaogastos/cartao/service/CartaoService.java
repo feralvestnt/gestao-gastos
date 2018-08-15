@@ -4,10 +4,10 @@ import br.com.gestaogastos.cartao.dto.CartaoDto;
 import br.com.gestaogastos.cartao.model.Cartao;
 import br.com.gestaogastos.cartao.predicate.CartaoPredicate;
 import br.com.gestaogastos.cartao.repository.CartaoRepository;
+import br.com.gestaogastos.comum.validation.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ValidationException;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +34,7 @@ public class CartaoService {
         Optional<Cartao> cartao = cartaoRepository.findById(id);
 
         if (!cartao.isPresent()) {
-            throw new ValidationException("Cartão não encontrado.");
+            throw new ValidacaoException("Cartão não encontrado");
         }
 
         return new CartaoDto(cartao.get().getId(), cartao.get().getNome(), null);

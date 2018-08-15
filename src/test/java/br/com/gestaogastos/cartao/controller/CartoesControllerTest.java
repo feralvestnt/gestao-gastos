@@ -20,8 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -78,6 +77,14 @@ public class CartoesControllerTest {
                 .andExpect(content().contentType(Request.getContentType()))
                 .andExpect(jsonPath("$.id", is(102)))
                 .andExpect(jsonPath("$.nome", is("BRADESCO POUPANÇA")));
+    }
+
+    @Test
+    public void deveNaoRetornarPorId() throws Exception {
+        mockMvc.perform(get("/cartoes/190")
+                .contentType(Request.getContentType()))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(containsString("Cartão não encontrado")));
     }
 
     @Test
