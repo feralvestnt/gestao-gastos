@@ -32,8 +32,8 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @Transactional
 @WebAppConfiguration
 @ActiveProfiles("test")
-@Sql({"/cartoes.sql"})
-public class CartoesControllerTest {
+@Sql({"/cartao.sql"})
+public class CartaoControllerTest {
 
     @Autowired
     private JacksonConverter jacksonConverter;
@@ -62,7 +62,7 @@ public class CartoesControllerTest {
                 .andExpect(jsonPath("$[1].id", is(101)))
                 .andExpect(jsonPath("$[1].nome", is("SANTANDER DEBITO")))
                 .andExpect(jsonPath("$[2].id", is(102)))
-                .andExpect(jsonPath("$[2].nome", is("BRADESCO POUPANÇA")))
+                .andExpect(jsonPath("$[2].nome", is("BRADESCO POUPANCA")))
                 .andExpect(jsonPath("$[3].id", is(103)))
                 .andExpect(jsonPath("$[3].nome", is("ITAÚ CREDITO")))
                 .andExpect(jsonPath("$[4].id", is(104)))
@@ -76,7 +76,7 @@ public class CartoesControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
                 .andExpect(jsonPath("$.id", is(102)))
-                .andExpect(jsonPath("$.nome", is("BRADESCO POUPANÇA")));
+                .andExpect(jsonPath("$.nome", is("BRADESCO POUPANCA")));
     }
 
     @Test

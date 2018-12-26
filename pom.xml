@@ -82,6 +82,12 @@
             <version>${querydsl.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.javamoney</groupId>
+            <artifactId>moneta</artifactId>
+            <version>1.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -108,9 +114,9 @@
                     <execution>
                         <id>add-source</id>
                         <phase>generate-sources</phase>
-                        <goals>
+                       <!-- <goals>
                             <goal>add-source</goal>
-                        </goals>
+                        </goals>-->
                         <configuration>
                             <sources>
                                 <source>${project.build.directory}/generated-sources/java/</source>

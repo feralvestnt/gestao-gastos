@@ -3,13 +3,13 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/test
     username: postgres
-    password: root
+    password: 123
 
   jpa:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
 
 server:
   port: 9000

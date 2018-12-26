@@ -12,13 +12,14 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
 @ActiveProfiles("test")
-@Sql({"/cartoes.sql"})
+@Sql({"/cartao.sql"})
 public class CartaoRepositoryTest {
 
     @Autowired
@@ -30,9 +31,9 @@ public class CartaoRepositoryTest {
         Cartao cartao = new Cartao("Cartão CAIXA", new Banco(100));
         cartaoRepository.save(cartao);
 
-        Cartao found = cartaoRepository.findById(1).get();
+        List<Cartao> cartoes = (List) cartaoRepository.findAll();
 
-        Assert.assertEquals("Cartão CAIXA", found.getNome());
+        Assert.assertEquals(6, cartoes.size());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package br.com.gestaogastos.cartao.model;
 
 import lombok.Data;
+import org.javamoney.moneta.Money;
 
 import javax.persistence.*;
 
@@ -17,6 +18,9 @@ public class Cartao {
 
     @Column(name = "NOME")
     private String nome;
+
+    @Column(name = "LIMITE")
+    private Money limite;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FK_BANCO", nullable = false, foreignKey = @ForeignKey(name = "FK_BANCO_CARTAO"))

@@ -1,6 +1,6 @@
 package br.com.gestaogastos.usuario.model;
 
-import br.com.gestaogastos.cartao.enums.ETipoUsuario;
+import br.com.gestaogastos.usuario.model.enums.ETipoUsuario;
 import lombok.Data;
 
 import javax.persistence.*;

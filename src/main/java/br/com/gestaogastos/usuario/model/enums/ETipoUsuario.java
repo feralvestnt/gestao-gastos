@@ -1,4 +1,4 @@
-package br.com.gestaogastos.cartao.enums;
+package br.com.gestaogastos.usuario.model.enums;
 
 public enum ETipoUsuario {
 
