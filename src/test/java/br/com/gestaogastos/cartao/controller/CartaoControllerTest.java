@@ -64,7 +64,7 @@ public class CartaoControllerTest {
                 .andExpect(jsonPath("$[2].id", is(102)))
                 .andExpect(jsonPath("$[2].nome", is("BRADESCO POUPANCA")))
                 .andExpect(jsonPath("$[3].id", is(103)))
-                .andExpect(jsonPath("$[3].nome", is("ITAÚ CREDITO")))
+                .andExpect(jsonPath("$[3].nome", is("ITAU CREDITO")))
                 .andExpect(jsonPath("$[4].id", is(104)))
                 .andExpect(jsonPath("$[4].nome", is("BANCO DO BRASIL DEBITO")));
     }
