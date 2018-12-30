@@ -3,6 +3,8 @@ package br.com.gestaogastos.cartao.controller;
 import br.com.gestaogastos.cartao.dto.CartaoDto;
 import br.com.gestaogastos.cartao.model.Cartao;
 import br.com.gestaogastos.cartao.service.CartaoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,8 @@ public class CartaoController {
     @Autowired
     private CartaoService cartaoService;
 
+    Logger log = LoggerFactory.getLogger(this.getClass());
+
     @PostMapping
     public void save(@RequestBody Cartao cartao) {
         cartaoService.save(cartao);
@@ -22,7 +26,11 @@ public class CartaoController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<CartaoDto> getCartoes(CartaoDto cartaoDto) {
-        return cartaoService.getByFilter(cartaoDto);
+        List<CartaoDto> cartoes = cartaoService.getByFilter(cartaoDto);
+        if (cartoes.size() == 0) {
+            log.warn("Não foi possível encontrar cartões ao efetuar a busca.");
+        }
+        return cartoes;
     }
 
     @RequestMapping(value = "/{cartaoId}", method = RequestMethod.GET)
