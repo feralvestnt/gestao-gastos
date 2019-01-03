@@ -1,6 +1,7 @@
 package br.com.gestaogastos.cartao.controller;
 
 import br.com.gestaogastos.cartao.dto.CartaoDto;
+import br.com.gestaogastos.cartao.dto.CartaoFilter;
 import br.com.gestaogastos.cartao.model.Cartao;
 import br.com.gestaogastos.cartao.service.CartaoService;
 import org.slf4j.Logger;
@@ -24,9 +25,14 @@ public class CartaoController {
         cartaoService.save(cartao);
     }
 
+    @PutMapping
+    public void update(@RequestBody Cartao cartao) {
+        cartaoService.save(cartao);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public List<CartaoDto> getCartoes(CartaoDto cartaoDto) {
-        List<CartaoDto> cartoes = cartaoService.getByFilter(cartaoDto);
+    public List<CartaoDto> getCartoes(CartaoFilter cartaoFilter) {
+        List<CartaoDto> cartoes = cartaoService.getByFilter(cartaoFilter);
         if (cartoes.size() == 0) {
             log.warn("Não foi possível encontrar cartões ao efetuar a busca.");
         }
@@ -39,4 +45,8 @@ public class CartaoController {
         return cartaoService.findById(cartaoId);
     }
 
+    @RequestMapping(value = "/{cartaoId}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Integer cartaoId){
+        cartaoService.delete(cartaoId);
+    }
 }

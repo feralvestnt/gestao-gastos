@@ -35,7 +35,7 @@
         <file>${LOGS}/severe-logger.log</file>
 
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>WARN</level>
+            <level>ERROR</level>
         </filter>
 
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -54,9 +54,9 @@
         </rollingPolicy>
     </appender>
 
-   <!-- <root level="trace">
+    <root level="error">
         <appender-ref ref="Console" />
-    </root>-->
+    </root>
 
     <logger name="br.com.gestaogastos" level="trace" additivity="false">
         <appender-ref ref="RollingFile" />
