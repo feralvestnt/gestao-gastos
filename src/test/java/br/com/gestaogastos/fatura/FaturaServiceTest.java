@@ -4,7 +4,7 @@ import br.com.gestaogastos.cartao.model.Cartao;
 import br.com.gestaogastos.cartao.model.Fatura;
 import br.com.gestaogastos.cartao.model.FaturaLancamento;
 import br.com.gestaogastos.cartao.service.FaturaService;
-import br.com.gestaogastos.cartao.util.CurrencyUtil;
+import br.com.gestaogastos.comum.CurrencyUtil;
 import org.javamoney.moneta.Money;
 import org.junit.Assert;
 import org.junit.Test;

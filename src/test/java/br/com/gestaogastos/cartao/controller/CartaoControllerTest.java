@@ -53,7 +53,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveRetornarTodos() throws Exception {
-        mockMvc.perform(get("/cartoes"))
+        mockMvc.perform(get("/api/cartoes"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
                 .andExpect(jsonPath("$", hasSize(5)))
@@ -71,7 +71,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveRetornarPorId() throws Exception {
-        mockMvc.perform(get("/cartoes/102")
+        mockMvc.perform(get("/api/cartoes/102")
                 .contentType(Request.getContentType()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
@@ -81,7 +81,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveNaoRetornarPorId() throws Exception {
-        mockMvc.perform(get("/cartoes/190")
+        mockMvc.perform(get("/api/cartoes/190")
                 .contentType(Request.getContentType()))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(containsString("Cartão não encontrado")));
@@ -89,7 +89,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveRetornarFiltroPorId() throws Exception {
-        mockMvc.perform(get("/cartoes?id=100")
+        mockMvc.perform(get("/api/cartoes?id=100")
                 .contentType(Request.getContentType()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
@@ -100,7 +100,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveRetornarFiltroPorNome() throws Exception {
-        mockMvc.perform(get("/cartoes?nome=CAIXA CREDITO")
+        mockMvc.perform(get("/api/cartoes?nome=CAIXA CREDITO")
                 .contentType(Request.getContentType()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
@@ -111,7 +111,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveRetornarFiltroPorIdENome() throws Exception {
-        mockMvc.perform(get("/cartoes?id=100&nome=CAIXA CREDITO")
+        mockMvc.perform(get("/api/cartoes?id=100&nome=CAIXA CREDITO")
                 .contentType(Request.getContentType()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
@@ -122,7 +122,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveNaoRetornarFiltroPorIdENome() throws Exception {
-        mockMvc.perform(get("/cartoes?id=101&nome=CAIXA CREDITO")
+        mockMvc.perform(get("/api/cartoes?id=101&nome=CAIXA CREDITO")
                 .contentType(Request.getContentType()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
@@ -131,7 +131,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveRetornarFiltroPorNomeEBancoId() throws Exception {
-        mockMvc.perform(get("/cartoes?nome=CAIXA CREDITO&bancoId=100")
+        mockMvc.perform(get("/api/cartoes?nome=CAIXA CREDITO&bancoId=100")
                 .contentType(Request.getContentType()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
@@ -140,7 +140,7 @@ public class CartaoControllerTest {
 
     @Test
     public void deveNaoRetornarFiltroPorNomeEBancoId() throws Exception {
-        mockMvc.perform(get("/cartoes?nome=CAIXA CREDITO&bancoId=101")
+        mockMvc.perform(get("/api/cartoes?nome=CAIXA CREDITO&bancoId=101")
                 .contentType(Request.getContentType()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(Request.getContentType()))
@@ -150,7 +150,7 @@ public class CartaoControllerTest {
     @Test
     public void deveSalvar() throws Exception {
         Cartao cartao = Cartao.withBanco("CAIXA DEBITO", new Banco(100));
-        mockMvc.perform(post("/cartoes")
+        mockMvc.perform(post("/api/cartoes")
                 .content(jacksonConverter.toJson(cartao))
                 .contentType(Request.getContentType()))
                 .andExpect(status().isOk());
