@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cartoes")
+@RequestMapping("api/cartoes")
 public class CartaoController {
 
     @Autowired
@@ -30,6 +30,7 @@ public class CartaoController {
         if (cartoes.size() == 0) {
             log.warn("Não foi possível encontrar cartões ao efetuar a busca.");
         }
+
         return cartoes;
     }
 

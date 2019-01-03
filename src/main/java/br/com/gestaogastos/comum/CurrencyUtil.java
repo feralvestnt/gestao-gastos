@@ -1,4 +1,4 @@
-package br.com.gestaogastos.cartao.util;
+package br.com.gestaogastos.comum;
 
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;
