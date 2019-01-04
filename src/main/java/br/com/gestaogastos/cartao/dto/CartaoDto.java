@@ -10,10 +10,10 @@ public class CartaoDto {
     private String nome;
     private Banco banco;
 
-    public CartaoDto(Integer id, String nome, Integer bancoId) {
+    public CartaoDto(Integer id, String nome, Integer bancoId, String bancoNome) {
         this.id = id;
         this.nome = nome;
-        this.banco = new Banco(bancoId);
+        this.banco = new Banco(bancoId, bancoNome);
     }
 
     public CartaoDto(){}

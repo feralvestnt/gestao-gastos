@@ -20,10 +20,14 @@ public class Banco {
 
     public Banco() {}
 
-    public Banco(Integer banco) {
-        this.id = banco;
+    public Banco(Integer id) {
+        this.id = id;
     }
 
+    public Banco(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 
 
 }

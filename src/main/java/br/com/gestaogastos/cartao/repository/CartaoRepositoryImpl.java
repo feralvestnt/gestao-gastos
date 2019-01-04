@@ -18,7 +18,13 @@ public class CartaoRepositoryImpl implements CartaoRepositoryCustom {
 
     public List<CartaoDto> getAll(Predicate predicate) {
         return new JPAQueryFactory(entityManager)
-                .select(Projections.constructor(CartaoDto.class, cartao.id, cartao.nome, cartao.banco.id))
+                .select(Projections.constructor(
+                    CartaoDto.class,
+                    cartao.id,
+                    cartao.nome,
+                    cartao.banco.id,
+                    cartao.banco.nome
+                ))
                 .from(cartao)
                 .join(cartao.banco, banco)
                 .where(predicate)

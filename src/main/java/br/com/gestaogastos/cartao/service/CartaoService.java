@@ -49,7 +49,12 @@ public class CartaoService {
             throw new ValidacaoException("Cartão não encontrado");
         }
 
-        return new CartaoDto(cartao.get().getId(), cartao.get().getNome(), cartao.get().getBanco().getId());
+        return new CartaoDto(
+                cartao.get().getId(),
+                cartao.get().getNome(),
+                cartao.get().getBanco().getId(),
+                cartao.get().getBanco().getNome()
+        );
     }
 
     public void delete(Integer cartaoId) {
